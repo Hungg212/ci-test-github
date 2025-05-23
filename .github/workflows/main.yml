@@ -11,22 +11,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: 18
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Fake build step
-        run: echo "Fake build completed."
-
+      - run: npm install
+      - run: echo "Fake build"
       - name: Upload README as artifact
-        uses: actions/upload-artifact@v3.1.3
+        uses: actions/upload-artifact@v3
         with:
           name: readme
           path: README.md
@@ -35,42 +27,27 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: 18
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run tests with coverage
-        run: npm run test -- --coverage
+      - run: npm install
+      - run: npm run test -- --coverage
 
   lint:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: 18
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run linter
-        run: npm run lint
+      - run: npm install
+      - run: npm run lint
 
   deploy:
     runs-on: ubuntu-latest
     needs: [test, lint]
     if: github.event_name == 'workflow_dispatch'
     steps:
-      - name: Manual deploy step
-        run: echo "🚀 Deploying... (manual trigger)"
+      - run: echo "Deploying..."
