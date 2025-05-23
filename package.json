@@ -1,9 +1,11 @@
 {
   "name": "ci-test-github",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "echo 'No linting' && exit 0",
+    "test": "echo 'No tests yet' && exit 0"
   },
   "repository": {
     "type": "git",
@@ -15,10 +17,5 @@
   "bugs": {
     "url": "https://github.com/Hungg212/ci-test-github/issues"
   },
-  "homepage": "https://github.com/Hungg212/ci-test-github#readme",
-  "description": ""
-}
-"scripts": {
-  "lint": "echo 'No linting' && exit 0",
-  "test": "echo 'No tests yet' && exit 0"
+  "homepage": "https://github.com/Hungg212/ci-test-github#readme"
 }
